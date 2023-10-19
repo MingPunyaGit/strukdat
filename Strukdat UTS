@@ -1,0 +1,71 @@
+if __name__ == "__main__":
+    stack = test()
+    stack.print()
+    stack.undo()
+    print()
+    stack.redo()
+    print()
+    stack.print()
+    print()
+    stack.add("Buku")
+    stack.add("Pensil")
+    stack.add("Krayon")
+    stack.print()
+    print()
+    print("Undo data: ")
+    stack.undo()
+    stack.print()
+    print()
+    print("Redo data: ")
+    stack.redo()
+    stack.print
+
+Buatlah file SLNC yang berisikan:
+a. Class Node, berisikan konstruktor
+b. Class SingleLinkedListNonCircular, yang berisikan:
+Konstruktor
+Method insert_head, terdapat pengecekan terlebih dahulu. Jika tidak kosong, data baru akan jadi head sekaligus tail. Jika tidak ada hubungkan data baru ke head dan pindahkan head ke depan.
+Method delete_head. Jika linked list kosong tidak bisa dihapus. Jika ada 1, maka ubah head dan tail menjadi None karena linked list kosong. Jika tidak keduanya, helper ada di posisi head, head akan bergeser ke selanjutnya, dan jumlah data berkurang satu.
+Print, untuk mencetak dari head sampai tail. Wajib pengecekan jika linked list kosong.
+Buatlah Class StackLinkedList yang memiliki method:
+a. Konstruktor, untuk menginisialisasi SLNC;
+b. Push, untuk menambahkan item ke top. Hanya menggunakan head;
+c. Top, untuk mengambil data di bagian head;
+d. Pop, untuk mengambil data di bagian head. Pada method pop harus bisa menghapus head juga;
+e. Clear, untuk menghapus isi dalam stack satu per satu;
+f. Print, untuk mencetak hasil. Gunakan method print dari SLNC; dan
+g. len sebagai fungsi khusus agar bisa digunakan di fungsi len.
+Kemudian, Class Test yang berisikan:
+a. Konstruktor, untuk menginisialisasi variabel di poin f
+b. Push, data wajib dalam bentuk string
+c. Top
+d. Clear
+e. Print
+f. Variabel main sebagai fungsi utama dan variabel redoo sebagai wadah menyimpan data yang di undo. Variabel boleh diganti asalkan program bisa berjalan.
+g. Fungsi add, untuk menambahkan data tetapi dalam bentuk string.
+h. Fungsi undo, untuk mengembalikan ke data sebelumnya yang pernah dibuat dan dimasukkan ke dalam stack redo. Fungsi undo harus terdapat pengecekan apakah ada data/tidak. Jika ada, masukkan ke variabel redo.
+i. Fungsi redo, untuk mengembalikan data yang sudah di undo ke dalam stack main. Fungsi redo harus terdapat pengecekan apakah ada data/tidak. Jika tidak ada, tidak boleh di push karena akan NONE.
+
+Buat 2 file untuk membuat Class SingleLinkedListNonCircular, Class StackLinkedList, dan Class Test.
+a. Penamaan File 1 yaitu SLNC untuk Class SingleLinkedListNonCircular
+b. Penamaan File 2 bebas, untuk Class StackLinkedList dan Class Test
+Import file 1 di dalam file 2.
+Kerjakan berdasarkan urutan ‘Aturan Pembuatan Program’
+
+contoh outputnya
+Empty
+Maaf stack masih kosong, anda tidka bisa undo
+
+Maaf history kosong, anda tidak bisa reedo lagi
+
+Empty 
+
+Krayon Pensil Bukyu
+
+Undo data:
+perintah Krayon di batalkan 
+Pensil buku
+
+Redo data:
+perintah Krayon dikembalikan 
+Krayon Pensil Buku
