@@ -130,3 +130,146 @@ if __name__ == "__main__":
     print("Redo data:")
     test.redo()
     test.print()
+# StackLinkedList.py
+
+class StackLinkedList:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, data):
+        self.stack.append(data)
+
+    def top(self):
+        return self.stack[-1] if self.stack else None
+
+    def pop(self):
+        return self.stack.pop() if self.stack else None
+
+    def clear(self):
+        self.stack = []
+
+    def print(self):
+        print(" ".join(self.stack))
+
+    def __len__(self):
+        return len(self.stack)
+
+class Test:
+    def __init__(self):
+        self.stack = StackLinkedList()
+        self.redo_stack = []
+
+    def push(self, data):
+        self.stack.push(data)
+
+    def top(self):
+        return self.stack.top()
+
+    def clear(self):
+        self.stack.clear()
+
+    def print(self):
+        self.stack.print()
+
+    def add(self, data):
+        self.stack.push(data)
+
+    def undo(self):
+        if len(self.stack) > 0:
+            data = self.stack.pop()
+            self.redo_stack.append(data)
+            print(f"perintah {data} di batalkan ")
+        else:
+            print("Maaf stack masih kosong, Anda tidak bisa undo")
+
+    def redo(self):
+        if len(self.redo_stack) > 0:
+            data = self.redo_stack.pop()
+            self.stack.push(data)
+            print(f"perintah {data} dikembalikan ")
+        else:
+            print("Maaf history kosong, Anda tidak bisa redo lagi")
+
+if __name__ == "__main__":
+    test = Test()
+    test
+# StackLinkedList.py
+
+class StackLinkedList:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, data):
+        self.stack.append(data)
+
+    def top(self):
+        return self.stack[-1] if self.stack else None
+
+    def pop(self):
+        return self.stack.pop() if self.stack else None
+
+    def clear(self):
+        self.stack = []
+
+    def print(self):
+        print(" ".join(self.stack))
+
+    def __len__(self):
+        return len(self.stack)
+
+class Test:
+    def __init__(self):
+        self.stack = StackLinkedList()
+        self.redo_stack = []
+
+    def push(self, data):
+        self.stack.push(data)
+
+    def top(self):
+        return self.stack.top()
+
+    def clear(self):
+        self.stack.clear()
+
+    def print(self):
+        self.stack.print()
+
+    def add(self, data):
+        self.stack.push(data)
+
+    def undo(self):
+        if len(self.stack) > 0:
+            data = self.stack.pop()
+            self.redo_stack.append(data)
+            print(f"perintah {data} di batalkan ")
+        else:
+            print("Maaf stack masih kosong, Anda tidak bisa undo")
+
+    def redo(self):
+        if len(self.redo_stack) > 0:
+            data = self.redo_stack.pop()
+            self.stack.push(data)
+            print(f"perintah {data} dikembalikan ")
+        else:
+            print("Maaf history kosong, Anda tidak bisa redo lagi")
+
+if __name__ == "__main__":
+    test = Test()
+    test.print()
+    print("Undo data:")
+    test.undo()
+    print("Redo data:")
+    test.redo()
+    test.print()
+    print()
+    test.add("Krayon")
+    test.add("Pensil")
+    test.add("Buku")
+    test.print()
+    print()
+    print("Undo data:")
+    test.undo()
+    test.print()
+    print("Redo data:")
+    test.redo()
+    test.print()
