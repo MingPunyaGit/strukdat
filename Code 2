@@ -1,0 +1,132 @@
+# SLNC.py - Class SingleLinkedListNonCircular
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class SingleLinkedListNonCircular:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def insert_head(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+
+    def delete_head(self):
+        if self.head is None:
+            return None
+        elif self.head == self.tail:
+            data = self.head.data
+            self.head = None
+            self.tail = None
+            return data
+        else:
+            data = self.head.data
+            self.head = self.head.next
+            return data
+
+    def print(self):
+        current = self.head
+        if current is None:
+            print("Empty")
+        else:
+            while current:
+                print(current.data, end=" ")
+                current = current.next
+        print()
+
+# StackLinkedList.py - Class StackLinkedList and Class Test
+
+from SLNC import SingleLinkedListNonCircular
+
+class StackLinkedList:
+    def __init__(self):
+        self.slnc = SingleLinkedListNonCircular()
+
+    def push(self, data):
+        self.slnc.insert_head(data)
+
+    def top(self):
+        return self.slnc.head.data if self.slnc.head else None
+
+    def pop(self):
+        return self.slnc.delete_head()
+
+    def clear(self):
+        while self.slnc.head:
+            self.slnc.delete_head()
+
+    def print(self):
+        self.slnc.print()
+
+    def __len__(self):
+        current = self.slnc.head
+        count = 0
+        while current:
+            count += 1
+            current = current.next
+        return count
+
+class Test:
+    def __init__(self):
+        self.stack = StackLinkedList()
+        self.redo_stack = StackLinkedList()
+
+    def push(self, data):
+        self.stack.push(data)
+
+    def top(self):
+        return self.stack.top()
+
+    def clear(self):
+        self.stack.clear()
+
+    def print(self):
+        self.stack.print()
+
+    def add(self, data):
+        self.stack.push(data)
+
+    def undo(self):
+        if len(self.stack) > 0:
+            data = self.stack.pop()
+            self.redo_stack.push(data)
+            print(f"perintah {data} di batalkan ")
+        else:
+            print("Maaf stack masih kosong, Anda tidak bisa undo")
+
+    def redo(self):
+        if len(self.redo_stack) > 0:
+            data = self.redo_stack.pop()
+            self.stack.push(data)
+            print(f"perintah {data} dikembalikan ")
+        else:
+            print("Maaf history kosong, Anda tidak bisa redo lagi")
+
+if __name__ == "__main__":
+    test = Test()
+    test.print()
+    print("Undo data:")
+    test.undo()
+    print("Redo data:")
+    test.redo()
+    test.print()
+    print()
+    test.add("Krayon")
+    test.add("Pensil")
+    test.add("Buku")
+    test.print()
+    print()
+    print("Undo data:")
+    test.undo()
+    test.print()
+    print("Redo data:")
+    test.redo()
+    test.print()
