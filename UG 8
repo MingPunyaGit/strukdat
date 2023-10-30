@@ -64,3 +64,18 @@ if __name__ == "__main__":
     print("Hasil Akhir: ")
     q.write_all_data()
     print("=============")
+
+
+def pop(queue):
+    if queue.is_empty():
+        return None
+    else:
+        data = queue.tail.element
+        if queue.head == queue.tail:
+            queue.head = None
+            queue.tail = None
+        else:
+            queue.tail = queue.tail.prev
+            queue.tail.next = None
+        queue.size -= 1
+        return data
